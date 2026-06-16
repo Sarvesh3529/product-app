@@ -1,20 +1,42 @@
-import React from "react";
-// Connects the Tailwind design engine to your whole app
-import "./globals.css";
+import type { Metadata, Viewport } from 'next'
+import { Space_Grotesk, JetBrains_Mono } from 'next/font/google'
+import './globals.css'
 
-export const metadata = {
-  title: "3D Product Preview Engine",
-  description: "Generate 3D assets on the fly",
-};
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  variable: '--font-space-grotesk',
+  display: 'swap',
+})
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-jetbrains-mono',
+  display: 'swap',
+})
+
+export const metadata: Metadata = {
+  title: 'Forge — Text to Printable 3D Models',
+  description:
+    'Describe an object in plain language and watch it forged into a printable 3D model. AI silhouette generation, contour extraction, and real-time extrusion in your browser.',
+  generator: 'v0.app',
+}
+
+export const viewport: Viewport = {
+  themeColor: '#1a1d24',
+  colorScheme: 'dark',
+}
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
-  return React.createElement(
-    "html",
-    { lang: "en" },
-    React.createElement("body", null, children)
-  );
+  return (
+    <html
+      lang="en"
+      className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} bg-background`}
+    >
+      <body className="font-sans antialiased">{children}</body>
+    </html>
+  )
 }
