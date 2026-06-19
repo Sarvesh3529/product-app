@@ -1,5 +1,4 @@
 import React from "react";
-// Connects the Tailwind design engine to your whole app
 import "./globals.css";
 
 export const metadata = {
@@ -14,7 +13,7 @@ export default function RootLayout({
 }) {
   return React.createElement(
     "html",
-    { lang: "en" },
-    React.createElement("body", null, children)
+    { lang: "en", className: "h-full w-full m-0 p-0 overflow-hidden" },
+    React.createElement("body", { className: "h-full w-full m-0 p-0 bg-[#020202]" }, children)
   );
 }
